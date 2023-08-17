@@ -6,6 +6,27 @@ This project only contains small programs to help me learn assembler.
 [nasm](./nasm) Contains examples using the Netwide Assembler.  
 [c](./c) C programs used for viewing the generated assembler code.  
 
+### Compiler
+
+- Requires NASM, GCC, and GDB
+- Install [MinGW](http://www.mingw.org/) -> GCC & GDB and add to path
+
+With Windows
+```bash
+nasm -f win32 -g file.asm -o file.o
+ld -m i386pe -g file.o -o file
+```
+
+With Linux
+```bash
+# 32-bit
+nasm -f elf32 -g file.asm -o file.o
+ld -m elf_i386 -g file.o -o file
+
+# 64-bit
+nasm -f elf64 -g file.asm -o file.o
+ld -m elf_x86_64 -g file.o -o file
+```
 ### Registers
 
 ```yaml
@@ -99,6 +120,20 @@ Do mỗi thanh đại diện cho bit cao hoặc thấp, vì vậy ghi gán giá 
 - Stack Segment: chứa dữ liệu và địa chỉ trả về của các chương trình con
 
 <img src="image/segment.png" width="50%>
+
+### Call
+
+- mov: gán giá trị nguồn -> đích
+- lea: lea eax, [ebx + 8] | tính địa chỉ của biến nằm cách ebx 8byte và lưu vào eax
+- add/sub: cộng trừ toán hạng và lưu vào đích
+- inc/dec: tăng/giảm giá trị thanh ghi đích
+- push/pop: làm việc với stack
+- cmp: so sánh 2 giá trị và cập nhật vào cờ so sánh
+- jump: nhảy đến địa chỉ
+- call/ret: gọi thủ tục con/quay lại thủ tục con
+- je/jne/jg/jge: jump if equal/not equal/greater/greater or equal
+- nop: no operation
+
 #### Caller saved
 
 These registers might be changed when making function calls and it is the
@@ -108,10 +143,6 @@ function depends on these values too they need to be stored on the stack.
 
 `rax` is used for the return value of the function being called, and the
 function being called might use rcx as a counter. 
-
-#### Callee saved
-These registers are preserved/saved accross function calls so if the called
-function needs to use these registers it has to store and the restore them.
 
 ### Calling Conventions
 The C calling conventions used on `32-bit x86` processor are the following:

@@ -13,3 +13,5 @@ jnz
 !*.*
 # ignore all file exten .o
 *.o
+*.exe
+*.obj

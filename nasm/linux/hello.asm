@@ -1,21 +1,22 @@
+section .bss
+
 section .data
-  msg db "hello world",10,0
-  ; note that 10 is the new line character in decimal
-  len equ $-msg-1
-  ; not that $ is the current address, we substract the address
-  ; of msg and then take that value -1 to ignore the 0/null byte
+    hello: db "Hello, World!", 10
+    helloLen: equ $ - hello
 
-section .bss 
+
 section .text
-  global main
+    global _start ; entry point
 
-main:
-  mov rax, 1
-  mov rdi, 1
-  mov rsi, msg
-  mov rdx, len
-  syscall
+    _start:
+        mov rax, 1  ; sys_write
+        mov rdi, 1  ; stdout
+        mov rsi, hello  ; buf
+        mov rdx, helloLen   ; len
+        syscall ; write(1, hello, helloLen)
 
-  mov rax, 60
-  mov rdi, 0
-  syscall
+        ; end program
+        mov rax, 60 ; sys_exit
+        mov rdi, 0  ; exit code
+        syscall ; exit(0)
+    

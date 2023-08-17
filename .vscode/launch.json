@@ -1,0 +1,50 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        // {
+        //     "type": "gdb",
+        //     "request": "launch",
+        //     "name": "GAS",
+        //     "program": "${fileDirname}/${fileBasenameNoExtension}",
+        //     "stopOnEntry": false,
+        //     "preLaunchTask": "gas"
+        // },
+        // {
+        //     "type": "gdb",
+        //     "request": "launch",
+        //     "name": "GDB32+GCC",
+        //     "program": "${fileDirname}/${fileBasenameNoExtension}",
+        //     "stopOnEntry": false,
+        //     "preLaunchTask": "asm32+gcc"
+        // },
+        // {
+        //     "type": "gdb",
+        //     "request": "launch",
+        //     "name": "GDB64+GCC",
+        //     "program": "${fileDirname}/${fileBasenameNoExtension}",
+        //     "stopOnEntry": false,
+        //     "preLaunchTask": "asm64+gcc"
+        // },
+        {
+            "type": "cppdbg",
+            "name": "Build Assembly Code (32-bit)",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+    ]
+}

@@ -1,14 +1,21 @@
-global _start
 section .data
-    msg db "Working", 0x0a
-    len equ $ - msg
+  msg db "hello world",10,0
+  ; note that 10 is the new line character in decimal
+  len equ $-msg-1
+  ; not that $ is the current address, we substract the address
+  ; of msg and then take that value -1 to ignore the 0/null byte
+
+section .bss 
 section .text
-_start:
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, msg
-    mov edx, len
-    int 0x80
-    mov eax, 1
-    mov ebx, 0
-    int 0x80
+  global main
+
+main:
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, msg
+  mov rdx, len
+  syscall
+
+  mov rax, 60
+  mov rdi, 0
+  syscall
