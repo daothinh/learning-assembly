@@ -66,28 +66,39 @@ r15             | r15d          | r15w          | r15b
 
 Thanh ghi nhỏ nhất là AH - AL: Kích thước 8bit, đại diện cho bit cao và bit thấp
 
-<img src="imgs/split_register.PNG" alt="isolated" width="50%"/>
+<img src="image/split_register.PNG" alt="isolated" width="50%"/>
 
 Do mỗi thanh đại diện cho bit cao hoặc thấp, vì vậy ghi gán giá trị cho mỗi loại bit thì đều có giá trị khác nhau.
 
 ### Flag
 
 ```yaml
-* ZF: Kết quả equal with 0, ngược lại sẽ bị xoá
-* CF: Kết quả out scope
-* SF: Kết quả phép toán là âm
+* AF (Auxiliary Carry Flag): cờ chứa giá trị nhớ khi chuyển từ bit có trọng số 3 lên bit có trọng số 4 khi thực hiện phép toán số học (từ bit thấp -> bit cao)
+* CF (Carry Flag): Cờ nhớ - chứa giá trị nhớ 0 hoặc 1 của MSB?(Thao tác trên bit cao nhất của 1 số hoặc thanh ghi) sau khi thực hiện phép toán số học
+* DF (Direction Flag): Xác định hướng trái hay phải cho việc di chuyển hoặc so sánh chuỗi. = 1 chuỗi hoạt động từ phải -> trái, = 0 ngược lại
+* OF (Overflow Flag): = 1 khi kết quả của phép toán có dấu > địa chỉ đích
+* SF (Sign Flag): kiểm tra kết quả phép toán số học là âm hay dương. = 1 nếu kết quả là giá trị âm, = 0 ngược lại
+* PF (Parity Flag): kiểm tra chẵn lẻ của kết quả. = 1 nếu kết quả là số chẵn, = 0 ngược lại
+* ZF (Zero Flag): thể hiện kết quả phép toán số học hoặc so sánh. Cờ bằng = 1 khi kết quả phép toán số học = 0 hoặc phép so sánh cho kết quả bằng nhau. Cờ bằng = 0 ngược lại.
 ```
 
-- Kết quả các cờ nhận được khi sau câu điều kiện so sánh
+- Ví dụ về kết quả các cờ nhận được khi sau câu điều kiện so sánh
   
-<img src="imgs/res_flag.PNG" alt="isolated" width="50%"/>
+<img src="image/res_flag.PNG" alt="isolated" width="50%"/>
 
 ### Banching
 
 - Câu lệnh rẽ nhánh
   
-<img src="imgs/banching.PNG" width="50%">
+<img src="image/banching.PNG" width="50%">
 
+### Segment
+
+- Code Segment: chứa các mã lệnh thực thi, thanh ghi đoạn code CS chứa địa chỉ bắt đầu của segment
+- Data Segment: chứa các biến, hằng số, dữ liệu của chương trình
+- Stack Segment: chứa dữ liệu và địa chỉ trả về của các chương trình con
+
+<img src="image/segment.png" width="50%>
 #### Caller saved
 
 These registers might be changed when making function calls and it is the
