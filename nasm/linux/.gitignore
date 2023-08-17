@@ -5,3 +5,11 @@ align
 func-args
 libsample
 jnz
+# ignore everything
+*
+# but not these files...
+!/**/
+# ...even if they are in subdirectories
+!*.*
+# ignore all file exten .o
+*.o

@@ -1,4 +1,5 @@
 ## Assembler
+
 This project only contains small programs to help me learn assembler.
 
 [gas](./gas) Contains examples using the GNU Assembler.  
@@ -6,7 +7,9 @@ This project only contains small programs to help me learn assembler.
 [c](./c) C programs used for viewing the generated assembler code.  
 
 ### Registers
-```console
+
+```yaml
+# 64-bit
 * rax     Accumlator register. Caller saved. Used for return values from functions. 
 * rbx     Base register. Caller saved.  
 * rdi     Destination Index pointer. Callee saved. Used to pass 1st argument to functions  
@@ -48,7 +51,45 @@ r14             | r14d          | r14w          | r14b
 r15             | r15d          | r15w          | r15b
 ```
 
+```yaml
+# 32-bit
+* EAX: Thanh ghi tích luỹ, thường được sử dụng nhập xuất và tính toán số học nhân chia cộng trừ
+* EBX: Thanh ghi cơ sở, sử dụng để đánh dấu, lưu địa chỉ bắt đầu của mảng
+* EDX: Thanh ghi dữ liệu, dùng nhập xuất tương tự EAX
+
+* ECX: Thanh ghi bộ đếm, thường được sử dụng trong đếm các vòng lặp
+
+* ESI/EDI: Con trỏ, SI (nguồn), DI (đích)
+* EBP: Con trỏ cơ sở ngăn xếp
+* ESP: Con trỏ ngăn xếp
+```
+
+Thanh ghi nhỏ nhất là AH - AL: Kích thước 8bit, đại diện cho bit cao và bit thấp
+
+<img src="imgs/split_register.PNG" alt="isolated" width="50%"/>
+
+Do mỗi thanh đại diện cho bit cao hoặc thấp, vì vậy ghi gán giá trị cho mỗi loại bit thì đều có giá trị khác nhau.
+
+### Flag
+
+```yaml
+* ZF: Kết quả equal with 0, ngược lại sẽ bị xoá
+* CF: Kết quả out scope
+* SF: Kết quả phép toán là âm
+```
+
+- Kết quả các cờ nhận được khi sau câu điều kiện so sánh
+  
+<img src="imgs/res_flag.PNG" alt="isolated" width="50%"/>
+
+### Banching
+
+- Câu lệnh rẽ nhánh
+  
+<img src="imgs/banching.PNG" width="50%">
+
 #### Caller saved
+
 These registers might be changed when making function calls and it is the
 callers responsibility to save them.
 The registers are `rax`, `rcx`, `edx`. So when calling a function if the current
@@ -712,6 +753,7 @@ You can show the sections using:
    (lldb) image dump sections
 
 ## Linking and Loading
+
 Using `chmod +x` any file can be set to be an executable, but this only tells the kernel to
 read the file into memory and to look for a header to determine the executable format. This header
 is often referred to as `magic` which is a know digit identifying a certain type of executable format.
