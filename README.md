@@ -127,7 +127,7 @@ Do mỗi thanh đại diện cho bit cao hoặc thấp, vì vậy ghi gán giá 
 - Data Segment: chứa các biến, hằng số, dữ liệu của chương trình
 - Stack Segment: chứa dữ liệu và địa chỉ trả về của các chương trình con
 
-<img src="image/segment.PNG" width="75%">
+<img src="image/segment.png" width="75%">
 
 ### Operations
 
