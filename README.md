@@ -27,6 +27,11 @@ ld -m elf_i386 -g file.o -o file
 nasm -f elf64 -g file.asm -o file.o
 ld -m elf_x86_64 -g file.o -o file
 ```
+
+### Data Type
+
+![Alt text](image/datatype.PNG)
+
 ### Registers
 
 ```yaml
@@ -80,9 +85,12 @@ r15             | r15d          | r15w          | r15b
 
 * ECX: Thanh ghi bộ đếm, thường được sử dụng trong đếm các vòng lặp
 
-* ESI/EDI: Con trỏ, SI (nguồn), DI (đích)
-* EBP: Con trỏ cơ sở ngăn xếp
+* ESI: Con trỏ nguồn cho mọi hoạt động chuỗi
+* EDI: Con trỏ đích cho mọi hoạt động chuỗi 
+
+* EBP: Con trỏ khung cơ sở ngăn xếp
 * ESP: Con trỏ ngăn xếp
+* EIP: Lưu con trỏ vào lệnh tiếp theo để thực thi -> con trỏ lệnh 
 ```
 
 Thanh ghi nhỏ nhất là AH - AL: Kích thước 8bit, đại diện cho bit cao và bit thấp
@@ -119,9 +127,9 @@ Do mỗi thanh đại diện cho bit cao hoặc thấp, vì vậy ghi gán giá 
 - Data Segment: chứa các biến, hằng số, dữ liệu của chương trình
 - Stack Segment: chứa dữ liệu và địa chỉ trả về của các chương trình con
 
-<img src="image/segment.png" width="50%>
+<img src="image/segment.PNG" width="75%">
 
-### Call
+### Operations
 
 - mov: gán giá trị nguồn -> đích
 - lea: lea eax, [ebx + 8] | tính địa chỉ của biến nằm cách ebx 8byte và lưu vào eax
