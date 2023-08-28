@@ -99,6 +99,10 @@ Thanh ghi nhỏ nhất là AH - AL: Kích thước 8bit, đại diện cho bit c
 
 Do mỗi thanh đại diện cho bit cao hoặc thấp, vì vậy ghi gán giá trị cho mỗi loại bit thì đều có giá trị khác nhau.
 
+### Fundamental data types
+
+<img src="image/size_word.png" alt="isolated" width="60%"/>
+
 ### Flag
 
 ```yaml
